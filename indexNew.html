@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap");
+      *,
+      body,
+      html,
+      .wrapper {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-family: "Roboto", sans-serif;
+      }
+      .wrapper {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 15% 30% 50% 5%;
+        grid-template-rows: 100%;
+        grid-template-areas: 
+        "aside inbox main panel"
+        ;
+      }
+      aside{
+        background: gray;
+        grid-area: aside;
+      }
+      .inbox{
+        background: blanchedalmond;
+        grid-area: inbox;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 15% 85%;
+        grid-template-areas: "inbox__title"
+        "inbox__users";
+      }
+      main{
+        background: lavender;
+        grid-area: main;
+        display: grid;
+        grid-template-rows: 15% 75% 10%;
+        grid-template-columns: 100%;
+        grid-template-areas: 
+        "header"
+        "chat"
+        "footer"
+        ;
+        
+      }
+      .panel{
+        background: lightgreen;
+        grid-area: panel;
+      }
+      header{
+        background: blueviolet;
+        grid-area: header;
+      }
+      .chat{
+        background: gold;
+        grid-area: chat;
+        overflow-y: scroll;
+        height: 100%;
+        padding: 3%;
+        
+      }
+      .chat::-webkit-scrollbar{
+        display: none;
+      }
+      footer{
+        background: blue;
+        grid-area: footer;
+      }
+      .inbox__title{
+        background: yellowgreen;
+        grid-area: inbox__title;
+      }
+      .inbox__users{
+        background: mediumslateblue;
+        grid-area: inbox__users;
+        overflow-y: scroll;
+        height: 95%;
+      }
+      .inbox__users::-webkit-scrollbar{
+        display: none;
+      }
+      .user{
+        /* grid-area: user__online; */
+        background: white;
+        display: flex;
+        height: 20%;
+        margin: 3%;
+      }
+      .chat__user-message{
+        background: white;
+        padding: 2%;
+        height: 1rem;
+        border-radius: 5px 5px 0 5px ;
+      }
+      .chat__user-message-user2{
+        background: rgb(172, 171, 171);
+        border-radius: 5px 5px 5px 0 ;
+      }
+      .chat__user{
+        display: flex;
+        height: 20%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        justify-content: space-around;
+        margin-top: 2%;
+      }
+      .chat__user-user2{
+        align-items: flex-start;  
+      }
+      .chat__date{
+        height: 5%;
+      }
+      .chat__user-time{
+        height: 15%;
+      }
+      .chat__user-status{
+        height: 15%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <aside></aside>
+      <section class="inbox">
+        <div class="inbox__title"></div>
+        <div class="inbox__users">
+            <div class="user">
+                <img class="user__img" src="https://via.placeholder.com/50" alt="">
+                <h4 class="user__name">Michal B.</h4>
+                <div class="user__position">Project manager</div>
+                <div class="user__message">Sent you the file</div>
+                <span class="user__income">2</span>
+            </div>
+            <div class="user">
+                <img class="user__img" src="https://via.placeholder.com/50" alt="">
+                <h4 class="user__name">Michal B.</h4>
+                <div class="user__position">Project manager</div>
+                <div class="user__message">Sent you the file</div>
+                <span class="user__income">2</span>
+            </div>
+            <div class="user">
+                <img class="user__img" src="https://via.placeholder.com/50" alt="">
+                <h4 class="user__name">Michal B.</h4>
+                <div class="user__position">Project manager</div>
+                <div class="user__message">Sent you the file</div>
+                <span class="user__income">2</span>
+            </div>
+            <div class="user">
+                <img class="user__img" src="https://via.placeholder.com/50" alt="">
+                <h4 class="user__name">Michal B.</h4>
+                <div class="user__position">Project manager</div>
+                <div class="user__message">Sent you the file</div>
+                <span class="user__income">2</span>
+            </div>
+            <div class="user">
+                <img class="user__img" src="https://via.placeholder.com/50" alt="">
+                <h4 class="user__name">Michal B.</h4>
+                <div class="user__position">Project manager</div>
+                <div class="user__message">Sent you the file</div>
+                <span class="user__income">2</span>
+            </div>
+            <div class="user">
+                <img class="user__img" src="https://via.placeholder.com/50" alt="">
+                <h4 class="user__name">Michal B.</h4>
+                <div class="user__position">Project manager</div>
+                <div class="user__message">Sent you the file</div>
+                <span class="user__income">2</span>
+            </div>
+            <div class="user">
+                <img class="user__img" src="https://via.placeholder.com/50" alt="">
+                <h4 class="user__name">Michal B.</h4>
+                <div class="user__position">Project manager</div>
+                <div class="user__message">Sent you the file</div>
+                <span class="user__income">2</span>
+            </div>
+            <div class="user">
+                <img class="user__img" src="https://via.placeholder.com/50" alt="">
+                <h4 class="user__name">Michal B.</h4>
+                <div class="user__position">Project manager</div>
+                <div class="user__message">Sent you the file</div>
+                <span class="user__income">2</span>
+            </div>
+        </div>
+      </section>
+      <main>
+        <header></header>
+        <section class="chat">
+            <div class="chat__date">26.09.2022, Monday</div>
+            <div class="chat__user">
+                <span class="chat__user-time">12:45</span>
+                <h4 class="chat__user-message">Hello!</h4>
+                <span class="chat__user-status">viewed</span>
+            </div>
+            <div class="chat__user chat__user-user2">
+                <span class="chat__user-time">12:45</span>
+                <h4 class="chat__user-message chat__user-message-user2">Hello!</h4>
+                <span class="chat__user-status">viewed</span>
+            </div>
+            <div class="chat__user">
+                <span class="chat__user-time">12:45</span>
+                <h4 class="chat__user-message">Hello!</h4>
+                <span class="chat__user-status">viewed</span>
+            </div>
+            <div class="chat__user chat__user-user2">
+                <span class="chat__user-time">12:45</span>
+                <h4 class="chat__user-message chat__user-message-user2">Hello!</h4>
+                <span class="chat__user-status">viewed</span>
+            </div>
+            <div class="chat__user">
+                <span class="chat__user-time">12:45</span>
+                <h4 class="chat__user-message">Hello!</h4>
+                <span class="chat__user-status">viewed</span>
+            </div>
+            <div class="chat__user chat__user-user2">
+                <span class="chat__user-time">12:45</span>
+                <h4 class="chat__user-message chat__user-message-user2">Hello!</h4>
+                <span class="chat__user-status">viewed</span>
+            </div>
+            <div class="chat__user">
+                <span class="chat__user-time">12:45</span>
+                <h4 class="chat__user-message">Hello!</h4>
+                <span class="chat__user-status">viewed</span>
+            </div>
+        </section>
+        <footer></footer>
+      </main>
+      <article class="panel"></article>
+    </div>
+  </body>
+</html>
