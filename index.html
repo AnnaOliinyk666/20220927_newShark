@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap");
       *,
@@ -16,225 +20,785 @@
         padding: 0;
         border: 0;
         font-family: "Roboto", sans-serif;
+        
+      }
+      :root {
+        --color-blue: #4b6bd8;
+        --color-grey: #f3f5f7;
+        --color-white: #ffffff;
+      }
+      .color-is-blue {
+        color: var(--color-blue);
+      }
+      .color-is-salmon {
+        color: salmon;
+      }
+      .color-is-purple {
+        color: purple;
+      }
+      .color-is-green {
+        color: green;
       }
       .wrapper {
-        width: 100%;
         display: grid;
-        grid-template-columns: 15% 30% 50% 5%;
-        grid-template-rows: 100%;
-        grid-template-areas: 
-        "aside inbox main panel"
-        ;
+        grid-template-columns: 250px 350px auto 70px;
+        grid-template-rows: auto;
+        grid-template-areas: "aside inbox main panel";
+        
       }
-      aside{
-        background: gray;
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      aside {
         grid-area: aside;
+        background: var(--color-grey);
+        /* padding: 10%; */
+        
       }
-      .inbox{
-        background: blanchedalmond;
+      .menu {
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+        border-right: 8px;
+      }
+      .menu__punkt {
+        padding: 10px 10px 20px 10px;
+        width: 95%;
+        height: 20px;
+      }
+      .menu__punkt:hover {
+        color: var(--color-blue);
+        background: var(--color-white);
+        border-radius: 8px 0 0 8px;
+        border-right: 8px solid salmon;
+      }
+      .menu__punkt-aktiv {
+        color: var(--color-blue);
+        background: var(--color-white);
+        border-radius: 8px 0 0 8px;
+        border-right: 8px solid salmon;
+      }
+      
+      .menu__icon {
+        font-size: 25px;
+        padding-right: 20px;
+      }
+      .inbox {
         grid-area: inbox;
         display: grid;
         grid-template-columns: 100%;
         grid-template-rows: 15% 85%;
-        grid-template-areas: "inbox__title"
-        "inbox__users";
-      }
-      main{
-        background: lavender;
-        grid-area: main;
-        display: grid;
-        grid-template-rows: 15% 75% 10%;
-        grid-template-columns: 100%;
-        grid-template-areas: 
-        "header"
-        "chat"
-        "footer"
-        ;
+        grid-template-areas:
+          "inbox__title"
+          "inbox__users";
+        border-right: 1px solid var(--color-grey);
+        
         
       }
-      .panel{
-        background: lightgreen;
+      main {
+        background: linear-gradient(329deg, #ebebeb, #fdfdfd);
+        grid-area: main;
+        display: grid;
+        grid-template-rows: 10% auto 10%;
+        grid-template-columns: 100%;
+        grid-template-areas:
+          "header"
+          "chat"
+          "footer";
+          border-right: 1px solid var(--color-grey);
+      }
+      .panel {
+        background: var(--color-white);
         grid-area: panel;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding:  20px 0;
+        box-sizing: border-box;
+        /* height: 95%; */
       }
-      header{
-        background: blueviolet;
+      header {
+        background: var(--color-white);
         grid-area: header;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        border-bottom: 1px solid var(--color-grey);
       }
-      .chat{
-        background: gold;
+      .chat {
         grid-area: chat;
         overflow-y: scroll;
         height: 100%;
         padding: 3%;
+        box-sizing: border-box;
         
       }
-      .chat::-webkit-scrollbar{
+      .chat::-webkit-scrollbar {
         display: none;
       }
-      footer{
-        background: blue;
+      footer {
         grid-area: footer;
+        box-sizing: border-box;
       }
-      .inbox__title{
-        background: yellowgreen;
+      .inbox__title {
+        background: var(--color-white);
         grid-area: inbox__title;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
       }
-      .inbox__users{
-        background: mediumslateblue;
+      .inbox__title-wrap {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .inbox__title-name {
+        height: 20%;
+        font-size: 30px;
+        width: 200px;
+      }
+      .inbox__button {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        background: transparent;
+        border-radius: 8px;
+        border: 1px solid rgb(197, 197, 197);
+        margin-top: 15px;
+      }
+      .inbox__option {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 200px;
+        margin-top: 10px;
+        background: var(--color-grey);
+        height: 30px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 25px;
+      }
+      .inbox__users {
+        background: var(--color-white);
         grid-area: inbox__users;
         overflow-y: scroll;
         height: 95%;
       }
-      .inbox__users::-webkit-scrollbar{
+      .inbox__users::-webkit-scrollbar {
         display: none;
       }
-      .user{
-        /* grid-area: user__online; */
-        background: white;
-        display: flex;
-        height: 20%;
-        margin: 3%;
-      }
-      .chat__user-message{
+
+      .chat__user-message {
         background: white;
         padding: 2%;
         height: 1rem;
-        border-radius: 5px 5px 0 5px ;
+        border-radius: 5px 5px 0 5px;
+        font-weight: 500;
       }
-      .chat__user-message-user2{
-        background: rgb(172, 171, 171);
-        border-radius: 5px 5px 5px 0 ;
+      .chat__user-message-user2 {
+        background: rgb(223, 222, 222);
+        border-radius: 5px 5px 5px 0;
       }
-      .chat__user{
+      .chat__user {
         display: flex;
-        height: 20%;
+        height: 15%;
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
         justify-content: space-around;
         margin-top: 2%;
       }
-      .chat__user-user2{
-        align-items: flex-start;  
+      .chat__user-user2 {
+        align-items: flex-start;
       }
-      .chat__date{
+      .chat__date {
         height: 5%;
       }
-      .chat__user-time{
+      .chat__user-time {
         height: 15%;
       }
-      .chat__user-status{
+      .chat__user-status {
         height: 15%;
+      }
+      .user__img {
+        border-radius: 25px;
+        height: 70%;
+      }
+
+      .logo {
+        display: flex;
+        justify-content: center;
+        height: 10%;
+        padding: 15px;
+      }
+      .logo__icon {
+        font-size: 40px;
+        margin-right: 20px;
+        color: var(--color-blue);
+      }
+      .logo__name {
+        font-weight: 600;
+        letter-spacing: 0.05rem;
+        padding: 5%;
+      }
+      .project {
+        height: 35%;
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 15px;
+      }
+      .project__button {
+        border-radius: 15px;
+        border: 2px solid gray;
+        height: 250px;
+      }
+      .project__button:hover {
+        cursor: pointer;
+        background: var(--color-blue);
+      }
+
+      .project__icon {
+        font-size: 24px;
+      }
+      .project__name:hover {
+        color: var(--color-blue);
+      }
+      .project__list {
+        display: flex;
+        justify-content: space-between;
+      }
+      .project__new-sms {
+        background: lightgray;
+        border-radius: 8px;
+        display: block;
+        height: 24px;
+        width: 24px;
+        text-align: center;
+        padding: 3px;
+        color: gray;
+      }
+      .inbox__option-button {
+        border-radius: 25px;
+        padding: 10px 25px 0px 25px;
+      }
+      .inbox__option-button:hover {
+        cursor: pointer;
+        background: var(--color-white);
+      }
+      .bg-is-white {
+        background: var(--color-white);
+      }
+      .item {
+        width: 80%;
+        height: 90px;
+        display: grid;
+        grid-template-columns: 100px auto;
+        margin-bottom: 1rem;
+        margin-left: 5%;
+        padding: 1rem;
+        line-height: 0;
+        border-radius: 20px;
+      }
+      .item-unread {
+        grid-template-columns: 100px auto 50px;
+        background: var(--color-grey);
+      }
+      .name {
+        display: flex;
+        flex-direction: column;
+        padding-top: 15px;
+      }
+      .name__sms-short {
+        font-weight: 400;
+        /* overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; */
+        font-size: 14px;
+      }
+      .name__sms-short h4{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .name__position {
+        font-weight: 500;
+        color: gray;
+      }
+      .name__employee-name {
+        font-weight: 500;
+      }
+      figure {
+        margin: 0;
+        line-height: 0;
+        position: relative;
+        width: 90px;
+        height: 90px;
+      }
+      .avatar-user {
+        border-radius: 20px;
+      }
+      .online {
+        background: rgb(138, 253, 138);
+        display: block;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        right: 5px;
+        bottom: 0;
+        border-radius: 50%;
+        border: 2px solid white;
+      }
+      .indicator {
+        background: var(--color-blue);
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        border-radius: 50%;
+        align-self: center;
+        margin: 1rem;
+        font-size: 16px;
+        color: rgb(185, 182, 182);
+      }
+      .indicator p {
+        margin-top: 13px;
+      }
+      .indicator-non {
+        display: none;
+      }
+      .login__avatar {
+        border-radius: 50%;
+        height: 80px;
+        margin-top: 7px;
+        
+        /* margin-left: 20px; */
+      }
+      .login {
+        display: flex;
+      }
+      .login__wrap {
+        margin-left: 15px;
+        /* justify-items: center; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .serch__wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 50%;
+      }
+      .search {
+        margin-right: 15px;
+        background: var(--color-grey);
+        border-radius: 8px;
+        height: 30%;
+        padding: 4px 15px;
+        box-sizing: border-box;
+      }
+      .header__button {
+        margin-left: 15px;
+        height: 35px;
+        width: 35px;
+        border-radius: 8px;
+        border: 1px solid var(--color-grey);
+        background: transparent;
+      }
+      .header__button i {
+        margin-top: 10px;
+      }
+      .search__input {
+        background: var(--color-grey);
+        border-radius: 8px;
+        outline: none;
+        outline-offset: none;
+        width: 200px;
+        /* padding: 10px; */
+        /* 
+        height: 40px; */
+      }
+      .search__input:active :focus :focus-within {
+        outline: none;
+        outline-offset: none;
+      }
+      .search__icon {
+        padding-right: 8px;
+      }
+      .login__name {
+        height: 20px;
+      }
+      .login__status {
+        height: 20px;
+        color: gray;
+      }
+      .avatar-wrapper {
+        position: relative;
+      }
+      .sms-input{
+        height: 100%;
+        width: 100%;
+        
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-top: 1px solid rgb(209, 209, 209);
+      }
+      .sms-input__input{
+        width: 70%;
+        background: transparent;
+        outline: none;
+        outline-offset: none;
+      }
+      .sms-input__button{
+        background: transparent;
+        border: 1px solid rgb(209, 209, 209);
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+      }
+      .sms-input__button:hover{
+        background: var(--color-blue);
+        cursor: pointer;
+      }
+      .sms-input__button i{
+margin-top: 8px;
+      }
+      .bg-is-blue{
+        background: var(--color-blue);
+      }
+      .button-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 20%;
+      }
+      .panel__button{
+        width: 35px;
+        height: 35px;
+        background: transparent;
+        border: 1px solid var(--color-grey);
+        border-radius: 8px;
+        margin-left: 25%;
+      }
+      .panel__button i{
+        margin-top: 7px;
+        font-size: 18px;
+        
+      }
+      .panel__button:hover{
+        background: var(--color-blue);
+        cursor: pointer;
+      }
+      .inbox__button:hover{
+        cursor: pointer;
+        background: var(--color-blue);
+      }
+      .header__button:hover{
+        cursor: pointer;
+        background: var(--color-blue);
       }
     </style>
   </head>
   <body>
     <div class="wrapper">
-      <aside></aside>
+      <aside>
+        <div class="logo">
+          <span class="logo__icon"><i class="las la-cube"></i></span>
+          <h3 class="logo__name">Shark</h3>
+        </div>
+        <nav class="menu">
+          <div class="menu__punkt">
+            <span class="menu__icon color-is-grey"
+              ><i class="las la-layer-group"></i
+            ></span>
+            <a class="menu__list" href=""> Dashboard </a>
+          </div>
+          <div class="menu__punkt">
+            <span class="menu__icon color-is-grey"
+              ><i class="las la-chart-area"></i
+            ></span>
+            <a class="menu__list" href=""> Statistics </a>
+          </div>
+          <div class="menu__punkt">
+            <span class="menu__icon color-is-grey"
+              ><i class="las la-comment-alt"></i
+            ></span>
+            <a class="menu__list" href=""> Support </a>
+          </div>
+          <div class="menu__punkt menu__punkt-aktiv">
+            <span class="menu__icon color-is-grey"
+              ><i class="las la-inbox"></i
+            ></span>
+            <a class="menu__list" href=""> Inbox </a>
+          </div>
+          <div class="menu__punkt">
+            <span class="menu__icon color-is-grey"
+              ><i class="las la-rocket"></i
+            ></span>
+            <a class="menu__list" href=""> Goals </a>
+          </div>
+          <div class="menu__punkt">
+            <span class="menu__icon color-is-grey"
+              ><i class="las la-link"></i
+            ></span>
+            <a class="menu__list" href=""> Links </a>
+          </div>
+        </nav>
+        <section class="project">
+          <h4 class="project__title color-is-grey">Projects</h4>
+          <div class="project__list">
+            <div class="project__wrapper">
+              <span class="project__icon color-is-salmon"
+                ><i class="las la-stop"></i
+              ></span>
+              <a class="project__name" href=""> Callipso </a>
+            </div>
+            <span class="project__new-sms">+4</span>
+          </div>
+          <div class="project__list">
+            <div class="project__wrapper">
+              <span class="project__icon color-is-blue"
+                ><i class="las la-stop"></i
+              ></span>
+              <a class="project__name" href=""> BWS bank</a>
+            </div>
+            <span class="project__new-sms">+4</span>
+          </div>
+          <div class="project__list">
+            <div class="project__wrapper">
+              <span class="project__icon color-is-purple"
+                ><i class="las la-stop"></i
+              ></span>
+              <a class="project__name" href=""> Unicorn app </a>
+            </div>
+            <span class="project__new-sms">+4</span>
+          </div>
+          <div class="project__list">
+            <div class="project__wrapper">
+              <span class="project__icon color-is-green"
+                ><i class="las la-stop"></i
+              ></span>
+              <a class="project__name" href=""> Salt </a>
+            </div>
+            <span class="project__new-sms">+4</span>
+          </div>
+          <button class="project__button">Show more</button>
+        </section>
+      </aside>
       <section class="inbox">
-        <div class="inbox__title"></div>
+        <div class="inbox__title">
+          <div class="inbox__title-wrap">
+            <h1 class="inbox__title-name">Inbox</h1>
+            <button class="inbox__button">+</button>
+          </div>
+          <div class="inbox__option">
+            <h4 class="inbox__option-button bg-is-white">General</h4>
+            <h4 class="inbox__option-button">Total</h4>
+          </div>
+        </div>
         <div class="inbox__users">
-            <div class="user">
-                <img class="user__img" src="https://via.placeholder.com/50" alt="">
-                <h4 class="user__name">Michal B.</h4>
-                <div class="user__position">Project manager</div>
-                <div class="user__message">Sent you the file</div>
-                <span class="user__income">2</span>
+          <div class="item item-unread">
+            <figure>
+              <img
+                class="avatar-user"
+                src="https://via.placeholder.com/50"
+                alt=""
+              />
+              <span class="online"></span>
+            </figure>
+
+            <div class="name">
+              <h3 class="name__employee-name">Michael.B</h3>
+              <h5 class="name__position">Project manager</h5>
+              <h4 class="name__sms-short">Sent you the file.</h4>
             </div>
-            <div class="user">
-                <img class="user__img" src="https://via.placeholder.com/50" alt="">
-                <h4 class="user__name">Michal B.</h4>
-                <div class="user__position">Project manager</div>
-                <div class="user__message">Sent you the file</div>
-                <span class="user__income">2</span>
+            <div class="indicator"><p>2</p></div>
+          </div>
+          <div class="item">
+            <figure>
+              <img
+                class="avatar-user"
+                src="https://via.placeholder.com/50"
+                alt=""
+              />
+            </figure>
+            <div class="name">
+              <h3 class="name__employee-name">Patrick.L</h3>
+              <h5 class="name__position">HR manager</h5>
+              <h4 class="name__sms-short">Hello...</h4>
             </div>
-            <div class="user">
-                <img class="user__img" src="https://via.placeholder.com/50" alt="">
-                <h4 class="user__name">Michal B.</h4>
-                <div class="user__position">Project manager</div>
-                <div class="user__message">Sent you the file</div>
-                <span class="user__income">2</span>
+            <div class="indicator indicator-non"><p>2</p></div>
+          </div>
+          <div class="item item-unread">
+            <figure>
+              <img
+                class="avatar-user"
+                src="https://via.placeholder.com/50"
+                alt=""
+              />
+              <span class="online"></span>
+            </figure>
+
+            <div class="name">
+              <h3 class="name__employee-name">Michael.B</h3>
+              <h5 class="name__position">Project manager</h5>
+              <h4 class="name__sms-short">Sent you the file...</h4>
             </div>
-            <div class="user">
-                <img class="user__img" src="https://via.placeholder.com/50" alt="">
-                <h4 class="user__name">Michal B.</h4>
-                <div class="user__position">Project manager</div>
-                <div class="user__message">Sent you the file</div>
-                <span class="user__income">2</span>
+            <div class="indicator"><p>2</p></div>
+          </div>
+          <div class="item">
+            <figure>
+              <img
+                class="avatar-user"
+                src="https://via.placeholder.com/50"
+                alt=""
+              />
+            </figure>
+            <div class="name">
+              <h3 class="name__employee-name">Patrick.L</h3>
+              <h5 class="name__position">HR manager</h5>
+              <h4 class="name__sms-short">Hello...</h4>
             </div>
-            <div class="user">
-                <img class="user__img" src="https://via.placeholder.com/50" alt="">
-                <h4 class="user__name">Michal B.</h4>
-                <div class="user__position">Project manager</div>
-                <div class="user__message">Sent you the file</div>
-                <span class="user__income">2</span>
+            <div class="indicator indicator-non"><p>2</p></div>
+          </div>
+          <div class="item item-unread">
+            <figure>
+              <img
+                class="avatar-user"
+                src="https://via.placeholder.com/50"
+                alt=""
+              />
+              <span class="online"></span>
+            </figure>
+
+            <div class="name">
+              <h3 class="name__employee-name">Michael.B</h3>
+              <h5 class="name__position">Project manager</h5>
+              <h4 class="name__sms-short">Sent you the file...</h4>
             </div>
-            <div class="user">
-                <img class="user__img" src="https://via.placeholder.com/50" alt="">
-                <h4 class="user__name">Michal B.</h4>
-                <div class="user__position">Project manager</div>
-                <div class="user__message">Sent you the file</div>
-                <span class="user__income">2</span>
+            <div class="indicator"><p>2</p></div>
+          </div>
+          <div class="item">
+            <figure>
+              <img
+                class="avatar-user"
+                src="https://via.placeholder.com/50"
+                alt=""
+              />
+            </figure>
+            <div class="name">
+              <h3 class="name__employee-name">Patrick.L</h3>
+              <h5 class="name__position">HR manager</h5>
+              <h4 class="name__sms-short">Hello...</h4>
             </div>
-            <div class="user">
-                <img class="user__img" src="https://via.placeholder.com/50" alt="">
-                <h4 class="user__name">Michal B.</h4>
-                <div class="user__position">Project manager</div>
-                <div class="user__message">Sent you the file</div>
-                <span class="user__income">2</span>
-            </div>
-            <div class="user">
-                <img class="user__img" src="https://via.placeholder.com/50" alt="">
-                <h4 class="user__name">Michal B.</h4>
-                <div class="user__position">Project manager</div>
-                <div class="user__message">Sent you the file</div>
-                <span class="user__income">2</span>
-            </div>
+            <div class="indicator indicator-non"><p>2</p></div>
+          </div>
         </div>
       </section>
       <main>
-        <header></header>
+        <header>
+          <div class="login">
+            <figure class="avatar-wrapper">
+              <img
+                class="login__avatar"
+                src="https://via.placeholder.com/48"
+                alt="avatar"
+              />
+              <span class="online"></span>
+            </figure>
+            <div class="login__wrap">
+              <h4 class="login__name">Anna.O</h4>
+              <h6 class="login__status">Online</h6>
+            </div>
+          </div>
+          <div class="serch__wrap">
+            <div class="search">
+              <input class="search__input" type="text" placeholder="Search" />
+              <span class="search__icon"><i class="las la-search"></i></span>
+            </div>
+            <button class="header__button">
+              <i class="las la-microphone"></i>
+            </button>
+            <button class="header__button">
+              <i class="las la-bullseye"></i>
+            </button>
+          </div>
+        </header>
         <section class="chat">
-            <div class="chat__date">26.09.2022, Monday</div>
-            <div class="chat__user">
-                <span class="chat__user-time">12:45</span>
-                <h4 class="chat__user-message">Hello!</h4>
-                <span class="chat__user-status">viewed</span>
-            </div>
-            <div class="chat__user chat__user-user2">
-                <span class="chat__user-time">12:45</span>
-                <h4 class="chat__user-message chat__user-message-user2">Hello!</h4>
-                <span class="chat__user-status">viewed</span>
-            </div>
-            <div class="chat__user">
-                <span class="chat__user-time">12:45</span>
-                <h4 class="chat__user-message">Hello!</h4>
-                <span class="chat__user-status">viewed</span>
-            </div>
-            <div class="chat__user chat__user-user2">
-                <span class="chat__user-time">12:45</span>
-                <h4 class="chat__user-message chat__user-message-user2">Hello!</h4>
-                <span class="chat__user-status">viewed</span>
-            </div>
-            <div class="chat__user">
-                <span class="chat__user-time">12:45</span>
-                <h4 class="chat__user-message">Hello!</h4>
-                <span class="chat__user-status">viewed</span>
-            </div>
-            <div class="chat__user chat__user-user2">
-                <span class="chat__user-time">12:45</span>
-                <h4 class="chat__user-message chat__user-message-user2">Hello!</h4>
-                <span class="chat__user-status">viewed</span>
-            </div>
-            <div class="chat__user">
-                <span class="chat__user-time">12:45</span>
-                <h4 class="chat__user-message">Hello!</h4>
-                <span class="chat__user-status">viewed</span>
-            </div>
+          <div class="chat__date">26.09.2022, Monday</div>
+          <div class="chat__user">
+            <span class="chat__user-time">12:45</span>
+            <h4 class="chat__user-message">Hello!</h4>
+            <span class="chat__user-status">viewed</span>
+          </div>
+          <div class="chat__user chat__user-user2">
+            <span class="chat__user-time">12:45</span>
+            <h4 class="chat__user-message chat__user-message-user2">
+              Lorem ipsum dolor sit amet.
+            </h4>
+            <span class="chat__user-status">viewed</span>
+          </div>
+          <div class="chat__user">
+            <span class="chat__user-time">12:45</span>
+            <h4 class="chat__user-message">Lorem, ipsum.</h4>
+            <span class="chat__user-status">viewed</span>
+          </div>
+          <div class="chat__user chat__user-user2">
+            <span class="chat__user-time">12:45</span>
+            <h4 class="chat__user-message chat__user-message-user2">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </h4>
+            <span class="chat__user-status">viewed</span>
+          </div>
+          <div class="chat__user">
+            <span class="chat__user-time">12:45</span>
+            <h4 class="chat__user-message">Hello!</h4>
+            <span class="chat__user-status">viewed</span>
+          </div>
+          <div class="chat__user chat__user-user2">
+            <span class="chat__user-time">12:45</span>
+            <h4 class="chat__user-message chat__user-message-user2">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </h4>
+            <span class="chat__user-status">viewed</span>
+          </div>
+          <div class="chat__user">
+            <span class="chat__user-time">12:45</span>
+            <h4 class="chat__user-message">Hello!</h4>
+            <span class="chat__user-status">viewed</span>
+          </div>
         </section>
-        <footer></footer>
+        <footer class="sms-input">
+          <input
+            class="sms-input__input"
+            type="text"
+            placeholder="Message..."
+          />
+          <button class="sms-input__button background-is-grey">
+            <i class="las la-image"></i>
+          </button>
+          <button class="sms-input__button background-is-grey">
+            <i class="las la-microphone"></i>
+          </button>
+          <button class="sms-input__button bg-is-blue">
+            <i class="las la-paper-plane"></i>
+          </button>
+        </footer>
       </main>
-      <article class="panel"></article>
+      <article class="panel">
+        <button class="panel__button"><i class="las la-ellipsis-v"></i></button>
+        <div class="button-wrapper"> 
+          <button class="panel__button"> <i class="las la-exclamation-circle"></i></button>
+        <button class="panel__button"><i class="las la-bell-slash"></i></button>
+        <button class="panel__button"><i class="las la-trash-alt"></i></button>
+      </div>
+      </article>
     </div>
   </body>
 </html>
