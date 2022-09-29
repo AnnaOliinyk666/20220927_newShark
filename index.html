@@ -48,7 +48,7 @@
         text-decoration: none;
         color: black;
       }
-      aside {
+      .aside {
         grid-area: aside;
         background: var(--color-grey);
         /* padding: 10%; */
@@ -504,7 +504,7 @@
           width: 100vw;
           height: 100vh;
         }
-        aside {
+        .aside {
           /* display: none; */
           transform: translateX(-255px);
           transition: all 0.5s ease-out;
@@ -515,7 +515,16 @@
           transform: none;
         }
         .inbox {
-          display: none;
+          /* display: none; */
+          transform: translateX(-100%);
+          transition: all 0.5s ease-out;
+          z-index: 1;
+          width: 90%;
+          position: absolute;
+          left: 0;
+        }
+        .inbox--open {
+          transform: none;
         }
         .panel {
           display: none;
@@ -561,21 +570,22 @@
         }
         .burger {
           position: fixed;
-          bottom: 5rem;
           top: 50%;
           left: 0;
+
           display: block;
-          transition: all 5s ease-out;
+
+          transition: all 0.5s ease-out;
         }
         .burger--open {
-          left: 250px;
+          left: 255px;
         }
       }
     </style>
   </head>
   <body>
     <div class="wrapper">
-      <aside>
+      <aside class="aside">
         <div class="logo">
           <span class="logo__icon"><i class="las la-cube"></i></span>
           <h3 class="logo__name">Shark</h3>
@@ -603,13 +613,13 @@
             <span class="menu__icon color-is-grey"
               ><i class="las la-inbox"></i
             ></span>
-            <a class="menu__list" href=""> Inbox </a>
+            <a class="menu__list" href="" onclick="toggleMenu2()"> Inbox </a>
           </div>
           <div class="menu__punkt">
             <span class="menu__icon color-is-grey"
               ><i class="las la-rocket"></i
             ></span>
-            <a class="menu__list" href=""> Goals </a>
+            <a class="menu__list" href="" > Goals </a>
           </div>
           <div class="menu__punkt">
             <span class="menu__icon color-is-grey"
@@ -874,12 +884,24 @@
         </div>
       </article>
     </div>
-    <div class="burger">
+    <div class="burger" onclick="toggleMenu()">
       <span>
         <button>
           <i class="las la-bars"></i>
         </button>
       </span>
     </div>
+    <script>
+      function toggleMenu() {
+        var aside = document.querySelector(".aside");
+        var burger = document.querySelector(".burger");
+        aside.classList.toggle("aside--open");
+        burger.classList.toggle("burger--open");
+      }
+      function toggleMenu2() {
+        var inbox = document.querySelector(".inbox");
+        inbox.classList.toggle("inbox--open");
+      }
+    </script>
   </body>
 </html>
