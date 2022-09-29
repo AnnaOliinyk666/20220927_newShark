@@ -20,7 +20,6 @@
         padding: 0;
         border: 0;
         font-family: "Roboto", sans-serif;
-        
       }
       :root {
         --color-blue: #4b6bd8;
@@ -44,7 +43,6 @@
         grid-template-columns: 250px 350px auto 70px;
         grid-template-rows: auto;
         grid-template-areas: "aside inbox main panel";
-        
       }
       a {
         text-decoration: none;
@@ -54,7 +52,6 @@
         grid-area: aside;
         background: var(--color-grey);
         /* padding: 10%; */
-        
       }
       .menu {
         height: 40%;
@@ -81,7 +78,7 @@
         border-radius: 8px 0 0 8px;
         border-right: 8px solid salmon;
       }
-      
+
       .menu__icon {
         font-size: 25px;
         padding-right: 20px;
@@ -95,8 +92,6 @@
           "inbox__title"
           "inbox__users";
         border-right: 1px solid var(--color-grey);
-        
-        
       }
       main {
         background: linear-gradient(329deg, #ebebeb, #fdfdfd);
@@ -108,7 +103,7 @@
           "header"
           "chat"
           "footer";
-          border-right: 1px solid var(--color-grey);
+        border-right: 1px solid var(--color-grey);
       }
       .panel {
         background: var(--color-white);
@@ -116,7 +111,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding:  20px 0;
+        padding: 20px 0;
         box-sizing: border-box;
         /* height: 95%; */
       }
@@ -134,7 +129,6 @@
         height: 100%;
         padding: 3%;
         box-sizing: border-box;
-        
       }
       .chat::-webkit-scrollbar {
         display: none;
@@ -321,7 +315,7 @@
         text-overflow: ellipsis; */
         font-size: 14px;
       }
-      .name__sms-short h4{
+      .name__sms-short h4 {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -375,7 +369,7 @@
         border-radius: 50%;
         height: 80px;
         margin-top: 7px;
-        
+
         /* margin-left: 20px; */
       }
       .login {
@@ -440,45 +434,45 @@
       .avatar-wrapper {
         position: relative;
       }
-      .sms-input{
+      .sms-input {
         height: 100%;
         width: 100%;
-        
+
         display: flex;
         justify-content: space-around;
         align-items: center;
         border-top: 1px solid rgb(209, 209, 209);
       }
-      .sms-input__input{
+      .sms-input__input {
         width: 70%;
         background: transparent;
         outline: none;
         outline-offset: none;
       }
-      .sms-input__button{
+      .sms-input__button {
         background: transparent;
         border: 1px solid rgb(209, 209, 209);
         width: 30px;
         height: 30px;
         border-radius: 8px;
       }
-      .sms-input__button:hover{
+      .sms-input__button:hover {
         background: var(--color-blue);
         cursor: pointer;
       }
-      .sms-input__button i{
-margin-top: 8px;
+      .sms-input__button i {
+        margin-top: 8px;
       }
-      .bg-is-blue{
+      .bg-is-blue {
         background: var(--color-blue);
       }
-      .button-wrapper{
+      .button-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         height: 20%;
       }
-      .panel__button{
+      .panel__button {
         width: 35px;
         height: 35px;
         background: transparent;
@@ -486,22 +480,96 @@ margin-top: 8px;
         border-radius: 8px;
         margin-left: 25%;
       }
-      .panel__button i{
+      .panel__button i {
         margin-top: 7px;
         font-size: 18px;
-        
       }
-      .panel__button:hover{
+      .panel__button:hover {
         background: var(--color-blue);
         cursor: pointer;
       }
-      .inbox__button:hover{
+      .inbox__button:hover {
         cursor: pointer;
         background: var(--color-blue);
       }
-      .header__button:hover{
+      .header__button:hover {
         cursor: pointer;
         background: var(--color-blue);
+      }
+      .burger {
+        display: none;
+      }
+      @media (max-width: 765px) {
+        .wrapper {
+          width: 100vw;
+          height: 100vh;
+        }
+        aside {
+          /* display: none; */
+          transform: translateX(-255px);
+          transition: all 0.5s ease-out;
+          z-index: 1;
+          height: 100vh;
+        }
+        .aside--open {
+          transform: none;
+        }
+        .inbox {
+          display: none;
+        }
+        .panel {
+          display: none;
+        }
+        main {
+          position: absolute;
+          border-right: none;
+        }
+        .login__avatar {
+          width: 50px;
+          height: 50px;
+        }
+        .avatar-wrapper {
+          width: 60px;
+          height: 60px;
+        }
+        .search__input {
+          display: none;
+        }
+        .search__icon {
+          background: transparent;
+          border: 1px solid var(--color-grey);
+          width: 30px;
+          height: 30px;
+          padding: 7px;
+          border-radius: 8px;
+          font-size: 16px;
+        }
+        .search__icon:hover {
+          background: var(--color-blue);
+        }
+        .search {
+          background: transparent;
+        }
+        .chat__user-message {
+          padding: 15px;
+          height: 1.5rem;
+        }
+
+        .burger button {
+          background: transparent;
+          color: rgba(70, 70, 69, 0.295);
+        }
+        .burger {
+          position: fixed;
+          bottom: 5rem;
+          top: 50%;
+          left: 0;
+          display: block;
+          transition: all 5s ease-out;
+        }
+        .burger--open {
+          left: 250px;
+        }
       }
     </style>
   </head>
@@ -793,12 +861,25 @@ margin-top: 8px;
       </main>
       <article class="panel">
         <button class="panel__button"><i class="las la-ellipsis-v"></i></button>
-        <div class="button-wrapper"> 
-          <button class="panel__button"> <i class="las la-exclamation-circle"></i></button>
-        <button class="panel__button"><i class="las la-bell-slash"></i></button>
-        <button class="panel__button"><i class="las la-trash-alt"></i></button>
-      </div>
+        <div class="button-wrapper">
+          <button class="panel__button">
+            <i class="las la-exclamation-circle"></i>
+          </button>
+          <button class="panel__button">
+            <i class="las la-bell-slash"></i>
+          </button>
+          <button class="panel__button">
+            <i class="las la-trash-alt"></i>
+          </button>
+        </div>
       </article>
+    </div>
+    <div class="burger">
+      <span>
+        <button>
+          <i class="las la-bars"></i>
+        </button>
+      </span>
     </div>
   </body>
 </html>
