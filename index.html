@@ -505,7 +505,72 @@
       .inbox__button--open{
         display: none;
       }
-      @media (max-width: 765px) {
+      @media (max-width: 992px) and (min-width: 765px){
+        body,
+        html,
+        .wrapper{
+          margin: 0;
+        }
+        .search__input {
+          display: none;
+        }
+        .search__icon {
+          background: transparent;
+          border: 1px solid var(--color-grey);
+          width: 30px;
+          height: 30px;
+          padding: 7px;
+          border-radius: 8px;
+          font-size: 16px;
+          
+        }
+        .search__icon:hover {
+          background: var(--color-blue);
+        }
+        .search {
+          background: transparent;
+        }
+        .inbox {
+         
+          transform: translateX(-100%);
+          transition: all 0.5s ease-out;
+          z-index: 1;
+          width: 50%;
+          position: absolute;
+          left: 0;
+          height: 100%;
+          
+        }
+        .inbox--open {
+          transform: none;
+        }
+        .aside{
+          height: 100%;
+        }
+        main{
+          margin-left: -350px;
+        }
+        .mob_menu_open{
+          display: block;
+          width: 100px;
+          height: 50px;
+          position: absolute;
+          top: 420px;
+          background: transparent;
+          color: transparent;
+        }
+        .inbox__button--open{
+          display: block;
+          background: salmon;
+          border-radius: 8px;
+          width: 30px;
+          height: 30px;
+          position: absolute;
+          right: 10px;
+          top: 45px;
+        }
+      }
+      @media (max-width: 765px){
         .wrapper {
           width: 100vw;
           height: 100vh;
@@ -607,6 +672,7 @@
           top: 21px;
         }
       }
+      
     </style>
   </head>
   <body>
