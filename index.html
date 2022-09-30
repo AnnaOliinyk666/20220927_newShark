@@ -26,6 +26,9 @@
         --color-grey: #f3f5f7;
         --color-white: #ffffff;
       }
+      .mob_menu_open{
+        display: none;
+      }
       .color-is-blue {
         color: var(--color-blue);
       }
@@ -499,6 +502,9 @@
       .burger {
         display: none;
       }
+      .inbox__button--open{
+        display: none;
+      }
       @media (max-width: 765px) {
         .wrapper {
           width: 100vw;
@@ -522,6 +528,7 @@
           width: 90%;
           position: absolute;
           left: 0;
+          
         }
         .inbox--open {
           transform: none;
@@ -580,6 +587,25 @@
         .burger--open {
           left: 255px;
         }
+        .mob_menu_open{
+          display: block;
+          width: 100px;
+          height: 50px;
+          position: absolute;
+          top: 300px;
+          background: transparent;
+          color: transparent;
+        }
+        .inbox__button--open{
+          display: block;
+          background: salmon;
+          border-radius: 8px;
+          width: 30px;
+          height: 30px;
+          position: absolute;
+          right: 10px;
+          top: 21px;
+        }
       }
     </style>
   </head>
@@ -613,7 +639,8 @@
             <span class="menu__icon color-is-grey"
               ><i class="las la-inbox"></i
             ></span>
-            <a class="menu__list" href="" onclick="toggleMenu2()"> Inbox </a>
+            <a class="menu__list" href=""> Inbox </a>
+            <button class="mob_menu_open" onclick="toggleMenu2()">+</button>
           </div>
           <div class="menu__punkt">
             <span class="menu__icon color-is-grey"
@@ -674,6 +701,7 @@
           <div class="inbox__title-wrap">
             <h1 class="inbox__title-name">Inbox</h1>
             <button class="inbox__button">+</button>
+            <button class="inbox__button--open" onclick="toggleMenu2()">X</button>
           </div>
           <div class="inbox__option">
             <h4 class="inbox__option-button bg-is-white">General</h4>
@@ -681,6 +709,23 @@
           </div>
         </div>
         <div class="inbox__users">
+          <div class="item item-unread">
+            <figure>
+              <img
+                class="avatar-user"
+                src="https://via.placeholder.com/50"
+                alt=""
+              />
+              <span class="online"></span>
+            </figure>
+
+            <div class="name">
+              <h3 class="name__employee-name">Michael.B</h3>
+              <h5 class="name__position">Project manager</h5>
+              <h4 class="name__sms-short">Sent you the file.</h4>
+            </div>
+            <div class="indicator"><p>2</p></div>
+          </div>
           <div class="item item-unread">
             <figure>
               <img
